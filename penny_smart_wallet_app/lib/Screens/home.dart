@@ -26,6 +26,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(
           child: ValueListenableBuilder(
               valueListenable: box.listenable(),
@@ -46,7 +47,7 @@ class _HomeState extends State<Home> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 19,
-                                color: Colors.black,
+                                color: Colors.white,
                               ),
                             ),
                             Text(
@@ -96,12 +97,15 @@ class _HomeState extends State<Home> {
         style: TextStyle(
           fontSize: 17,
           fontWeight: FontWeight.w600,
+                    color: Colors.white
+
         ),
       ),
       subtitle: Text(
         '${day[history.datetime.weekday - 1]}  ${history.datetime.year}-${history.datetime.day}-${history.datetime.month}',
         style: TextStyle(
           fontWeight: FontWeight.w600,
+          color: Colors.white
         ),
       ),
       trailing: Text(
@@ -124,7 +128,7 @@ class _HomeState extends State<Home> {
               width: double.infinity,
               height: 240,
               decoration: BoxDecoration(
-                color: Color(0xff368983),
+                color:  Colors.black,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
@@ -132,23 +136,7 @@ class _HomeState extends State<Home> {
               ),
               child: Stack(
                 children: [
-                  Positioned(
-                    top: 35,
-                    left: 340,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(7),
-                      child: Container(
-                        height: 40,
-                        width: 40,
-                        color: Color.fromRGBO(250, 250, 250, 0.1),
-                        child: Icon(
-                          Icons.notification_add_outlined,
-                          size: 30,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
+                  
                   Padding(
                     padding: const EdgeInsets.only(top: 35, left: 10),
                     child: Column(
@@ -194,13 +182,13 @@ class _HomeState extends State<Home> {
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                  color: Color.fromRGBO(47, 125, 121, 0.3),
+                  color: Colors.deepPurple,
                   offset: Offset(0, 6),
                   blurRadius: 12,
                   spreadRadius: 6,
                 ),
               ],
-              color: Color.fromARGB(255, 47, 125, 121),
+              color: Color.fromARGB(255, 0, 0, 0),
               borderRadius: BorderRadius.circular(15),
             ),
             child: Column(
@@ -252,7 +240,7 @@ class _HomeState extends State<Home> {
                         children: [
                           CircleAvatar(
                             radius: 13,
-                            backgroundColor: Color.fromARGB(255, 85, 145, 141),
+                            backgroundColor: Colors.green,
                             child: Icon(
                               Icons.arrow_downward,
                               color: Colors.white,
@@ -265,7 +253,7 @@ class _HomeState extends State<Home> {
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
-                              color: Color.fromARGB(255, 216, 216, 216),
+                              color: Colors.green,
                             ),
                           ),
                         ],
@@ -274,7 +262,7 @@ class _HomeState extends State<Home> {
                         children: [
                           CircleAvatar(
                             radius: 13,
-                            backgroundColor: Color.fromARGB(255, 85, 145, 141),
+                            backgroundColor: Colors.red,
                             child: Icon(
                               Icons.arrow_upward,
                               color: Colors.white,
@@ -287,7 +275,7 @@ class _HomeState extends State<Home> {
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
-                              color: Color.fromARGB(255, 216, 216, 216),
+                              color: Colors.red,
                             ),
                           ),
                         ],
@@ -306,7 +294,7 @@ class _HomeState extends State<Home> {
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 17,
-                          color: Colors.white,
+                          color: Colors.green,
                         ),
                       ),
                       Text(
@@ -314,7 +302,7 @@ class _HomeState extends State<Home> {
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 17,
-                          color: Colors.white,
+                          color: Colors.red,
                         ),
                       ),
                     ],
