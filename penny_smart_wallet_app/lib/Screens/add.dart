@@ -41,12 +41,12 @@ class _Add_ScreenState extends State<Add_Screen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Stack(
           alignment: AlignmentDirectional.center,
           children: [
-            background_container(context),
+            _backButton(context),
             Positioned(
               top: 120,
               child: main_container(),
@@ -60,7 +60,7 @@ class _Add_ScreenState extends State<Add_Screen> {
   Container main_container() {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(50),
         color: Colors.white,
       ),
       height: 550,
@@ -97,7 +97,7 @@ class _Add_ScreenState extends State<Add_Screen> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: Color(0xff368983),
+          color: Colors.deepPurple,
         ),
         width: 120,
         height: 50,
@@ -311,52 +311,32 @@ class _Add_ScreenState extends State<Add_Screen> {
     );
   }
 
-  Column background_container(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: double.infinity,
-          height: 240,
-          decoration: BoxDecoration(
-            color: Color(0xff368983),
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
-            ),
-          ),
-          child: Column(
-            children: [
-              SizedBox(height: 40),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Icon(Icons.arrow_back, color: Colors.white),
-                    ),
-                    Text(
-                      'Adding',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white),
-                    ),
-                    Icon(
-                      Icons.attach_file_outlined,
-                      color: Colors.white,
-                    )
-                  ],
-                ),
-              )
+  Widget _backButton(BuildContext context) {
+    return Positioned(
+      top: 10,
+      left: 0,
+      child: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Row(
+            children: <Widget>[
+              Container(
+                padding: const EdgeInsets.only(left: 0, top: 10, bottom: 10),
+                child:
+                    Icon(Icons.keyboard_arrow_left, color: Colors.grey.shade50),
+              ),
+              Text('Back',
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey.shade50))
             ],
           ),
         ),
-      ],
+      ),
     );
   }
 }
