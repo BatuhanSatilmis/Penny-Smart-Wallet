@@ -68,7 +68,32 @@ Widget _formFields() {
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.pink.shade300, width: 2.0),
+            borderSide: BorderSide(color: Colors.deepPurple, width: 3.0),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          fillColor: Colors.grey[900],
+          filled: true,
+          contentPadding: const EdgeInsets.all(19),
+        ),
+        style: TextStyle(color: Colors.grey[50], fontSize: 17),
+      ),
+      const SizedBox(height: 30),
+      TextFormField(
+        showCursor: false,
+        obscureText: true,
+        textCapitalization: TextCapitalization.sentences,
+        decoration: InputDecoration(
+          hintText: 'Enter your Surname',
+          hintStyle: TextStyle(color: Colors.grey.shade600),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(
+              style: BorderStyle.solid,
+              color: Colors.grey.shade800,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.deepPurple, width: 3.0),
             borderRadius: BorderRadius.circular(12),
           ),
           fillColor: Colors.grey[900],
@@ -92,7 +117,7 @@ Widget _formFields() {
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.pink.shade300, width: 2.0),
+            borderSide: BorderSide(color: Colors.deepPurple, width: 3.0),
             borderRadius: BorderRadius.circular(12),
           ),
           fillColor: Colors.grey[900],
@@ -117,7 +142,7 @@ Widget _formFields() {
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.pink.shade300, width: 2.0),
+            borderSide: BorderSide(color: Colors.deepPurple, width: 3.0),
             borderRadius: BorderRadius.circular(12),
           ),
           fillColor: Colors.grey[900],

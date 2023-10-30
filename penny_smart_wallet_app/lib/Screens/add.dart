@@ -61,7 +61,7 @@ class _Add_ScreenState extends State<Add_Screen> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
-        color: Colors.white,
+        color: const Color.fromARGB(255, 34, 34, 34),
       ),
       height: 550,
       width: 340,
@@ -127,7 +127,7 @@ class _Add_ScreenState extends State<Add_Screen> {
               context: context,
               initialDate: date,
               firstDate: DateTime(2023),
-              lastDate: DateTime(2024));
+              lastDate: DateTime(2025));
           if (newDate == Null) return;
           setState(() {
             date = newDate!;
@@ -137,7 +137,7 @@ class _Add_ScreenState extends State<Add_Screen> {
           'Date : ${date.year} / ${date.day} / ${date.month}',
           style: TextStyle(
             fontSize: 15,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
       ),

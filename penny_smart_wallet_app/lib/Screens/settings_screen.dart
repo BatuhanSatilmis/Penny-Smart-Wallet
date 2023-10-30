@@ -1,4 +1,4 @@
-import 'package:penny_smart_wallet/Screens/edit_screen.dart';
+import 'package:penny_smart_wallet/Screens/edit_account_view.dart';
 import 'package:penny_smart_wallet/widgets/bottomnavigationbar.dart';
 import 'package:penny_smart_wallet/widgets/settings_widget/forward_button.dart';
 import 'package:penny_smart_wallet/widgets/settings_widget/logout_button.dart';
@@ -81,7 +81,7 @@ class _AccountScreenState extends State<AccountScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const EditAccountScreen(),
+                            builder: (context) => const EditAccountView(),
                           ),
                         );
                       },

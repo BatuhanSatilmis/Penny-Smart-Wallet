@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
               child: Container(
                 margin: EdgeInsets.fromLTRB(45, 0, 45, 20),
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 34, 34, 34),
+                  color: Color.fromARGB(255, 26, 4, 63),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Padding(
@@ -211,7 +211,7 @@ class _HomeState extends State<Home> {
         height: 170,
         decoration: BoxDecoration(
           boxShadow: [],
-          color: Color.fromARGB(255, 34, 34, 34),
+          color: Color.fromARGB(255, 26, 4, 63),
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(
