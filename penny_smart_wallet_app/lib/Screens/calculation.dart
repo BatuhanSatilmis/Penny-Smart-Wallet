@@ -105,7 +105,7 @@ class _CalculationWidgetState extends State<Calculation> {
         calculateYearlyEstimate(monthlyTotalMonth, currentMonth);
 
     return Scaffold(
-      backgroundColor: Colors.black, // Arka planı siyah yapın
+      backgroundColor: Colors.black,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -115,7 +115,7 @@ class _CalculationWidgetState extends State<Calculation> {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Colors.white, // Metin rengini beyaz yapın
+                color: Colors.white,
               ),
             ),
             SizedBox(height: 20),
@@ -123,26 +123,23 @@ class _CalculationWidgetState extends State<Calculation> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 DataCard(
-                  title: "Günlük Harcamalar",
-                  total: totalToday,
-                  monthlyEstimate: monthlyTotalToday,
-                  yearlyEstimate: yearlyTotalToday,
-                  cardColor: Colors.deepPurple,
-                ),
+                    title: "Günlük Harcamalar",
+                    total: totalToday,
+                    monthlyEstimate: monthlyTotalToday,
+                    yearlyEstimate: yearlyTotalToday,
+                    cardColor: Color.fromARGB(255, 26, 4, 63)),
                 DataCard(
-                  title: "Haftalık Harcamalar",
-                  total: totalWeek,
-                  monthlyEstimate: monthlyTotalWeek,
-                  yearlyEstimate: yearlyTotalWeek,
-                  cardColor: Color.fromARGB(255, 121, 28, 0),
-                ),
+                    title: "Haftalık Harcamalar",
+                    total: totalWeek,
+                    monthlyEstimate: monthlyTotalWeek,
+                    yearlyEstimate: yearlyTotalWeek,
+                    cardColor: Color.fromARGB(255, 26, 4, 63)),
                 DataCard(
-                  title: "Aylık Harcamalar",
-                  total: totalMonth,
-                  monthlyEstimate: monthlyTotalMonth,
-                  yearlyEstimate: yearlyTotalMonth,
-                  cardColor: Color.fromARGB(255, 0, 73, 4),
-                ),
+                    title: "Aylık Harcamalar",
+                    total: totalMonth,
+                    monthlyEstimate: monthlyTotalMonth,
+                    yearlyEstimate: yearlyTotalMonth,
+                    cardColor: Color.fromARGB(255, 26, 4, 63)),
               ],
             ),
           ],
@@ -169,12 +166,12 @@ class DataCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ZoomIn(
-      duration: Duration(seconds: 1), // Animasyon süresi
+    return FadeInDown(
+      duration: Duration(seconds: 1),
       child: Container(
         margin: EdgeInsets.all(20),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: BorderRadius.circular(15),
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
