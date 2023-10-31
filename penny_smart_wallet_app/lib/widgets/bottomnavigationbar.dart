@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:penny_smart_wallet/Screens/add.dart';
-import 'package:penny_smart_wallet/Screens/calculation.dart';
-import 'package:penny_smart_wallet/Screens/home.dart';
-import 'package:penny_smart_wallet/Screens/statistics.dart';
-import 'package:penny_smart_wallet/Screens/settings_screen.dart';
+import 'package:penny_smart_wallet/Views/view_add/add.dart';
+import 'package:penny_smart_wallet/Views/view_calculation/calculation.dart';
+import 'package:penny_smart_wallet/Views/view_home/home.dart';
+import 'package:penny_smart_wallet/Views/view_statistics/statistics.dart';
+import 'package:penny_smart_wallet/Views/view_settings/settings_screen.dart';
 
 class Bottom extends StatefulWidget {
   const Bottom({Key? key}) : super(key: key);
