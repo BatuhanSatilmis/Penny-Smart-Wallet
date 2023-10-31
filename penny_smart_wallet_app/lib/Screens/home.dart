@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
               child: Container(
                 margin: EdgeInsets.fromLTRB(45, 0, 45, 20),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 26, 4, 63),
+                  color: Color.fromARGB(255, 38, 33, 46),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Padding(
@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
                     padding: EdgeInsets.only(top: 10, left: 40, right: 40),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(34, 34, 34, 1),
+                        color: Color.fromARGB(255, 38, 33, 46),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: getList(history, index),
@@ -260,7 +260,7 @@ class _HomeState extends State<Home> {
                     children: [
                       CircleAvatar(
                         radius: 13,
-                        backgroundColor: Colors.green,
+                        backgroundColor: Color.fromARGB(255, 31, 61, 6),
                         child: Icon(
                           Icons.arrow_downward,
                           color: Colors.white,
@@ -282,7 +282,7 @@ class _HomeState extends State<Home> {
                     children: [
                       CircleAvatar(
                         radius: 13,
-                        backgroundColor: Colors.red,
+                        backgroundColor: Color.fromARGB(255, 114, 44, 23),
                         child: Icon(
                           Icons.arrow_upward,
                           color: Colors.white,
