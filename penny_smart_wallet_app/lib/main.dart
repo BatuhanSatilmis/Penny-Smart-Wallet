@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:penny_smart_wallet/Screens/splashscreen.dart';
+import 'package:penny_smart_wallet/Views/view_splashscreen/splashscreen.dart';
 
 import 'data/model/add_date.dart';
 
