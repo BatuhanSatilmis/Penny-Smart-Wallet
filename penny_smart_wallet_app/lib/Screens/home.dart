@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
               child: Container(
                 margin: EdgeInsets.fromLTRB(45, 0, 45, 20),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 38, 33, 46),
+                  color: Color.fromARGB(255, 43, 14, 94),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Padding(
@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
                     padding: EdgeInsets.only(top: 10, left: 40, right: 40),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 38, 33, 46),
+                        color: Color.fromARGB(255, 34, 34, 34),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: getList(history, index),
@@ -211,7 +211,7 @@ class _HomeState extends State<Home> {
         height: 170,
         decoration: BoxDecoration(
           boxShadow: [],
-          color: Color.fromARGB(255, 26, 4, 63),
+          color: Color.fromARGB(255, 43, 14, 94),
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(
