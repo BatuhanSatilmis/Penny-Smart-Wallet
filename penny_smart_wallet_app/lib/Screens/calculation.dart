@@ -127,13 +127,13 @@ class _CalculationWidgetState extends State<Calculation> {
                     total: totalToday,
                     monthlyEstimate: monthlyTotalToday,
                     yearlyEstimate: yearlyTotalToday,
-                    cardColor: Color.fromARGB(255, 26, 4, 63)),
+                    cardColor: Color.fromARGB(255, 41, 17, 2)),
                 DataCard(
                     title: "Haftalık Harcamalar",
                     total: totalWeek,
                     monthlyEstimate: monthlyTotalWeek,
                     yearlyEstimate: yearlyTotalWeek,
-                    cardColor: Color.fromARGB(255, 26, 4, 63)),
+                    cardColor: Color.fromARGB(255, 2, 32, 12)),
                 DataCard(
                     title: "Aylık Harcamalar",
                     total: totalMonth,
