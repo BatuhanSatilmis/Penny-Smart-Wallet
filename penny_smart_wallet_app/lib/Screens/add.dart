@@ -19,14 +19,17 @@ class _Add_ScreenState extends State<Add_Screen> {
   final TextEditingController amount_c = TextEditingController();
   FocusNode amount_ = FocusNode();
   final List<String> _item = [
-    'food',
+    'Food',
     "Transfer",
     "Transportation",
-    "Education"
+    "Education",
+    "Drinks",
+    "Bills",
+    "Work"
   ];
   final List<String> _itemei = [
     'Income',
-    "Expand",
+    "Spending",
   ];
   @override
   void initState() {
@@ -69,8 +72,6 @@ class _Add_ScreenState extends State<Add_Screen> {
         children: [
           SizedBox(height: 50),
           name(),
-          SizedBox(height: 30),
-          explain(),
           SizedBox(height: 30),
           amount(),
           SizedBox(height: 30),
@@ -210,27 +211,6 @@ class _Add_ScreenState extends State<Add_Screen> {
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           labelText: 'amount',
-          labelStyle: TextStyle(fontSize: 17, color: Colors.grey.shade500),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xffC5C5C5))),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xff368983))),
-        ),
-      ),
-    );
-  }
-
-  Padding explain() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextField(
-        focusNode: ex,
-        controller: expalin_C,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-          labelText: 'explain',
           labelStyle: TextStyle(fontSize: 17, color: Colors.grey.shade500),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
