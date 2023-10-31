@@ -69,22 +69,21 @@ class _EditAccountViewState extends State<EditAccountView> {
                       });
                     }
                   },
-                  child:
-                      Image.asset("images/avatar.png", width: 60, height: 60),
+                  child: _selectedImage != null
+                      ? Image.file(
+                          _selectedImage!,
+                          width: 60,
+                          height: 60,
+                        )
+                      : Image.asset(
+                          "images/avatar.png",
+                          width: 60,
+                          height: 60,
+                        ),
                 ),
               ),
             ],
           ),
-
-          // Display the selected image
-          if (_selectedImage != null)
-            ClipOval(
-              child: Image.file(
-                _selectedImage!,
-                width: 60,
-                height: 60,
-              ),
-            ),
         ],
       ),
     );
