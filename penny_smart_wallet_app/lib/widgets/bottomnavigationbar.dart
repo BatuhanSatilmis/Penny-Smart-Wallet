@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:penny_smart_wallet/Views/view_add/add.dart';
+import 'package:penny_smart_wallet/Views/view_add/add_view.dart';
 import 'package:penny_smart_wallet/Views/view_calculation/calculation.dart';
 import 'package:penny_smart_wallet/Views/view_home/home.dart';
 import 'package:penny_smart_wallet/Views/view_statistics/statistics.dart';
