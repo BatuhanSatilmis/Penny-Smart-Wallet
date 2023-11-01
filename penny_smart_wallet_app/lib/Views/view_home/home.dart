@@ -59,7 +59,7 @@ class _HomeState extends State<Home> {
                         const EdgeInsets.only(right: 0, top: 10, bottom: 10),
                     child: Ink(
                       decoration: ShapeDecoration(
-                        color: Colors.transparent, // Arka plan rengi
+                        color: Colors.transparent,
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
                             width: isNotificationActive ? 2.0 : 1.0,

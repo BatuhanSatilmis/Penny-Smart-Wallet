@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:penny_smart_wallet/data/utlity.dart';
-import 'package:penny_smart_wallet/widgets/chart.dart'; // Chart widget'ını dahil edin
+import 'package:penny_smart_wallet/widgets/chart.dart';
 import '../../data/model/add_date.dart';
 
 class Statistics extends StatefulWidget {
@@ -10,11 +10,11 @@ class Statistics extends StatefulWidget {
   State<Statistics> createState() => _StatisticsState();
 }
 
-ValueNotifier<int> kj = ValueNotifier<int>(0);
+ValueNotifier kj = ValueNotifier(0);
 
 class _StatisticsState extends State<Statistics> {
-  List<String> day = ['Day', 'Week', 'Month', 'Year'];
-  List<List<Add_data>> f = [today(), week(), month(), year()];
+  List day = ['Day', 'Week', 'Month', 'Year'];
+  List f = [today(), week(), month(), year()];
   List<Add_data> a = [];
   int index_color = 0;
   bool ascendingOrder = true;
@@ -24,19 +24,21 @@ class _StatisticsState extends State<Statistics> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
-        child: ValueListenableBuilder<int>(
+        child: ValueListenableBuilder(
           valueListenable: kj,
-          builder: (BuildContext context, int value, Widget? child) {
+          builder: (BuildContext context, dynamic value, Widget? child) {
             a = f[value];
+
             sortList();
-            return custom(a);
+
+            return custom();
           },
         ),
       ),
     );
   }
 
-  CustomScrollView custom(List<Add_data> data) {
+  CustomScrollView custom() {
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
@@ -105,7 +107,7 @@ class _StatisticsState extends State<Statistics> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Top Spending & Incomes',
+                      'Top Spending',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,

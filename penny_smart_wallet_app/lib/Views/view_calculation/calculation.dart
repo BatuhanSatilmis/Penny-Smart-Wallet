@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:penny_smart_wallet/data/model/add_date.dart';
-import 'package:penny_smart_wallet/data/utlity.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:penny_smart_wallet/data/utlity.dart';
 
 class Calculation extends StatefulWidget {
   @override
@@ -18,6 +18,7 @@ class _CalculationWidgetState extends State<Calculation> {
   int totalWeek = 0;
   int totalMonth = 0;
   int totalYear = 0;
+  late Box<Add_data> box;
 
   @override
   void initState() {
@@ -26,14 +27,13 @@ class _CalculationWidgetState extends State<Calculation> {
   }
 
   void initializeData() async {
-    await Hive.openBox<Add_data>('data');
+    box = await Hive.openBox<Add_data>('data');
 
     todayData = today();
     weekData = week();
     monthData = month();
     yearData = year();
 
-    // Yıllara göre verileri gruplandırın
     Map<int, Map<int, List<Add_data>>> yearlyData = groupDataByYear();
 
     totalToday = total_chart(todayData);
@@ -45,15 +45,13 @@ class _CalculationWidgetState extends State<Calculation> {
       totalYear = total_chart(
           yearlyData[specificYear]!.values.expand((data) => data).toList());
     } else {
-      totalYear =
-          0; // Eğer belirli bir yıl için veri yoksa, totalYear'ı sıfırla.
+      totalYear = 0;
     }
 
     setState(() {});
   }
 
   Map<int, Map<int, List<Add_data>>> groupDataByYear() {
-    // Verileri yıllara ve aylara göre gruplandırın
     Map<int, Map<int, List<Add_data>>> groupedData = {};
 
     for (var data in box.values) {
@@ -76,7 +74,10 @@ class _CalculationWidgetState extends State<Calculation> {
 
   int calculateMonthlyEstimate(int total, int daysElapsed) {
     if (daysElapsed <= 0) return total;
-    int remainingDaysInMonth = 30 - daysElapsed; // Basit bir varsayım
+    int remainingDaysInMonth =
+        DateTime(DateTime.now().year, DateTime.now().month + 1, 1)
+            .subtract(Duration(days: 1))
+            .day;
     return (total * remainingDaysInMonth).toInt();
   }
 
@@ -88,7 +89,7 @@ class _CalculationWidgetState extends State<Calculation> {
   int calculateWeeklyEstimate(int total, int daysElapsed) {
     if (daysElapsed <= 0) return total;
 
-    int remainingDaysInWeek = DateTime.now().weekday - 1;
+    int remainingDaysInWeek = 7 - DateTime.now().weekday;
     return (total * (7 / remainingDaysInWeek)).toInt();
   }
 
@@ -99,13 +100,13 @@ class _CalculationWidgetState extends State<Calculation> {
 
     int monthlyTotalToday = calculateMonthlyEstimate(totalToday, daysElapsed);
 
+    int weeklyTotalToday = calculateWeeklyEstimate(totalToday, daysElapsed);
+
     int monthlyTotalWeek = calculateMonthlyEstimate(totalWeek, daysElapsed);
 
     int monthlyTotalMonth = calculateMonthlyEstimate(totalMonth, daysElapsed);
     num yearlyTotalMonth =
         calculateYearlyEstimate(monthlyTotalMonth, currentMonth);
-
-    int weeklyTotalToday = calculateWeeklyEstimate(totalToday, daysElapsed);
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -128,22 +129,22 @@ class _CalculationWidgetState extends State<Calculation> {
                 DataCard(
                     title: "Günlük Harcamalar",
                     total: totalToday,
-                    monthlyEstimate: monthlyTotalToday * 30,
-                    weeklyEstimate: weeklyTotalToday * 7,
-                    yearlyEstimate: monthlyTotalToday * 30 * 12,
+                    monthlyEstimate: monthlyTotalToday,
+                    weeklyEstimate: weeklyTotalToday,
+                    yearlyEstimate: monthlyTotalToday * 12,
                     cardColor: Color.fromARGB(255, 41, 17, 2)),
                 DataCard(
                     title: "Haftalık Harcamalar",
                     total: totalWeek,
-                    monthlyEstimate: monthlyTotalWeek * 4,
-                    weeklyEstimate: weeklyTotalToday * 0,
-                    yearlyEstimate: monthlyTotalWeek * 4 * 12,
+                    monthlyEstimate: monthlyTotalWeek,
+                    weeklyEstimate: weeklyTotalToday,
+                    yearlyEstimate: monthlyTotalWeek * 12,
                     cardColor: Color.fromARGB(255, 2, 32, 12)),
                 DataCard(
                     title: "Aylık Harcamalar",
                     total: totalMonth,
                     monthlyEstimate: monthlyTotalMonth,
-                    weeklyEstimate: weeklyTotalToday * 0,
+                    weeklyEstimate: weeklyTotalToday,
                     yearlyEstimate: yearlyTotalMonth,
                     cardColor: Color.fromARGB(255, 26, 4, 63)),
               ],

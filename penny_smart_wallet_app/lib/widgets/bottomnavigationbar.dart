@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:penny_smart_wallet/views/view_add/add_view.dart';
 import 'package:penny_smart_wallet/views/view_calculation/calculation.dart';
 import 'package:penny_smart_wallet/views/view_home/home.dart';
-import 'package:penny_smart_wallet/views/view_statistics/statistics.dart';
-import 'package:penny_smart_wallet/views/view_settings/settings_screen.dart';
+import 'package:penny_smart_wallet/views/view_statistics/statistics_view.dart';
+import 'package:penny_smart_wallet/views/view_settings/settings_view.dart';
 
 class Bottom extends StatefulWidget {
   const Bottom({Key? key}) : super(key: key);
@@ -58,7 +58,7 @@ class _BottomState extends State<Bottom> {
                 onTap: () {
                   setState(() {
                     index_color = 1;
-                    shouldShowAddButton = true;
+                    shouldShowAddButton = false;
                   });
                 },
                 child: Icon(
