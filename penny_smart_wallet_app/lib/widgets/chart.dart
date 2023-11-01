@@ -47,9 +47,10 @@ class _ChartState extends State<Chart> {
           // color: Colors.black,
           width: double.infinity,
           height: 300,
+
           child: SfCircularChart(
-            series: <DoughnutSeries>[
-              DoughnutSeries<SalesData, String>(
+            series: <RadialBarSeries>[
+              RadialBarSeries<SalesData, String>(
                 dataSource: <SalesData>[
                   ...List.generate(time(a!, b ? true : false).length, (index) {
                     return SalesData(
@@ -117,8 +118,8 @@ class _ChartState extends State<Chart> {
           height: 300,
           child: SfCartesianChart(
             primaryXAxis: CategoryAxis(),
-            series: <ScatterSeries<SalesData, String>>[
-              ScatterSeries<SalesData, String>(
+            series: <StackedAreaSeries<SalesData, String>>[
+              StackedAreaSeries<SalesData, String>(
                 color: Colors.red,
                 dataSource: <SalesData>[
                   ...List.generate(time(a!, b ? true : false).length, (index) {
