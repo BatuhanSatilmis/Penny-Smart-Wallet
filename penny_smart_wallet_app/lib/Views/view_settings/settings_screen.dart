@@ -1,4 +1,4 @@
-import 'package:penny_smart_wallet/Views/view_edit_account/edit_account_view.dart';
+import 'package:penny_smart_wallet/views/view_edit_account/edit_account_view.dart';
 import 'package:penny_smart_wallet/widgets/bottomnavigationbar.dart';
 import 'package:penny_smart_wallet/widgets/settings_widget/forward_button.dart';
 import 'package:penny_smart_wallet/widgets/settings_widget/logout_button.dart';

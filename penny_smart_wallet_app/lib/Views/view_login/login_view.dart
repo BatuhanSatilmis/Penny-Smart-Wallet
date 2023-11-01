@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:penny_smart_wallet/Views/view_forgot_password/forgot_password_view.dart';
-import 'package:penny_smart_wallet/Views/view_signup/signup_view.dart';
+import 'package:penny_smart_wallet/views/view_forgot_password/forgot_password_view.dart';
+import 'package:penny_smart_wallet/views/view_signup/signup_view.dart';
 import 'package:penny_smart_wallet/widgets/bottomnavigationbar.dart';
 
 class LoginPageView extends StatefulWidget {

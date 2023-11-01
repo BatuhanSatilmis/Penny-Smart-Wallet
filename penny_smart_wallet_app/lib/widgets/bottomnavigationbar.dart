@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:penny_smart_wallet/Views/view_add/add_view.dart';
-import 'package:penny_smart_wallet/Views/view_calculation/calculation.dart';
-import 'package:penny_smart_wallet/Views/view_home/home.dart';
-import 'package:penny_smart_wallet/Views/view_statistics/statistics.dart';
-import 'package:penny_smart_wallet/Views/view_settings/settings_screen.dart';
+import 'package:penny_smart_wallet/views/view_add/add_view.dart';
+import 'package:penny_smart_wallet/views/view_calculation/calculation.dart';
+import 'package:penny_smart_wallet/views/view_home/home.dart';
+import 'package:penny_smart_wallet/views/view_statistics/statistics.dart';
+import 'package:penny_smart_wallet/views/view_settings/settings_screen.dart';
 
 class Bottom extends StatefulWidget {
   const Bottom({Key? key}) : super(key: key);
@@ -37,7 +37,7 @@ class _BottomState extends State<Bottom> {
       bottomNavigationBar: BottomAppBar(
         color: Colors.black,
         child: Padding(
-          padding: const EdgeInsets.only(top: 7.5, bottom: 7.5),
+          padding: const EdgeInsets.only(top: 5.5, bottom: 5.5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

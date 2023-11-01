@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:penny_smart_wallet/Views/view_login/login_view.dart';
+import 'package:penny_smart_wallet/views/view_login/login_view.dart';
 
 class ExitIconWidget extends StatelessWidget {
   @override
