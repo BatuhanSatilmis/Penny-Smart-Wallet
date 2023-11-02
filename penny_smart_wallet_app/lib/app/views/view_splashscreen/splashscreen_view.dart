@@ -1,13 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:penny_smart_wallet/views/view_login/login_view.dart';
+import 'package:penny_smart_wallet/app/routes/app_router.dart';
 import 'dart:async';
 
-class SplashScreen extends StatefulWidget {
+@RoutePage()
+class SplashScreenView extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreenView> {
   double containerSize = 400.0;
   Color containerColor = Colors.black;
 
@@ -21,11 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       });
 
       Timer(Duration(milliseconds: 500), () {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => LoginPageView(),
-          ),
-        );
+        context.router.replace(LoginPageViewRoute());
       });
     });
   }

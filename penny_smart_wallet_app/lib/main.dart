@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:penny_smart_wallet/views/view_splashscreen/splashscreen_view.dart';
+import 'package:penny_smart_wallet/app/routes/app_router.dart';
 
-import 'data/model/add_date.dart';
+import 'core/data/model/add_date.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      routerConfig: AppRouter().config(),
     );
   }
 }

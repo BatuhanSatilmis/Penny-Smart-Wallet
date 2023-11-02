@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:penny_smart_wallet/views/view_add/add_view.dart';
-import 'package:penny_smart_wallet/views/view_calculation/calculation.dart';
-import 'package:penny_smart_wallet/views/view_home/home.dart';
-import 'package:penny_smart_wallet/views/view_statistics/statistics_view.dart';
-import 'package:penny_smart_wallet/views/view_settings/settings_view.dart';
+import 'package:penny_smart_wallet/app/routes/app_router.dart';
+import 'package:penny_smart_wallet/app/views/view_calculation/calculation.dart';
+import 'package:penny_smart_wallet/app/views/view_home/home.dart';
+import 'package:penny_smart_wallet/app/views/view_statistics/statistics_view.dart';
+import 'package:penny_smart_wallet/app/views/view_settings/settings_view.dart';
+import 'package:auto_route/auto_route.dart';
 
-class Bottom extends StatefulWidget {
-  const Bottom({Key? key}) : super(key: key);
+@RoutePage()
+class BottomView extends StatefulWidget {
+  const BottomView({Key? key}) : super(key: key);
 
   @override
-  State<Bottom> createState() => _BottomState();
+  State<BottomView> createState() => _BottomState();
 }
 
-class _BottomState extends State<Bottom> {
+class _BottomState extends State<BottomView> {
   int index_color = 0;
-  List Screen = [Home(), Statistics(), Calculation(), AccountScreen()];
+  List Screen = [
+    HomeView(),
+    StatisticsView(),
+    CalculationView(),
+    SettingsView()
+  ];
 
   bool shouldShowAddButton = true;
 
@@ -26,8 +33,7 @@ class _BottomState extends State<Bottom> {
       floatingActionButton: shouldShowAddButton
           ? FloatingActionButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => Add_Screen()));
+                context.router.replace(AddViewRoute());
               },
               child: Icon(Icons.add),
               backgroundColor: Colors.deepPurple,

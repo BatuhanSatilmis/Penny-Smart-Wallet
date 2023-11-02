@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:penny_smart_wallet/data/model/add_date.dart';
-import 'package:penny_smart_wallet/data/utlity.dart';
+import 'package:penny_smart_wallet/core/data/model/add_date.dart';
+import 'package:penny_smart_wallet/core/data/utlity.dart';
+import 'package:auto_route/auto_route.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+@RoutePage()
+class HomeView extends StatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeViewState extends State<HomeView> {
   var history;
   final box = Hive.box<Add_data>('data');
   final List<String> day = [
@@ -178,6 +180,42 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           child: Text('Transportation'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            filterByCategory('Drinks');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromARGB(255, 34, 34, 34),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                          child: Text('Drinks'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            filterByCategory('Bills');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromARGB(255, 34, 34, 34),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                          child: Text('Bills'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            filterByCategory('Work');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromARGB(255, 34, 34, 34),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                          child: Text('Work'),
                         ),
                       ],
                     ),

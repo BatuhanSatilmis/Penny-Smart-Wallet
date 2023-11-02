@@ -1,20 +1,22 @@
-import 'package:penny_smart_wallet/views/view_edit_account/edit_account_view.dart';
-import 'package:penny_smart_wallet/widgets/bottomnavigationbar.dart';
-import 'package:penny_smart_wallet/widgets/settings_widget/forward_button.dart';
-import 'package:penny_smart_wallet/widgets/settings_widget/logout_button.dart';
-import 'package:penny_smart_wallet/widgets/settings_widget/setting_item.dart';
-import 'package:penny_smart_wallet/widgets/settings_widget/setting_switch.dart';
+import 'package:penny_smart_wallet/app/views/view_edit_account/edit_account_view.dart';
+import 'package:penny_smart_wallet/core/widgets/bottomnavigationbar.dart';
+import 'package:penny_smart_wallet/core/widgets/settings_widget/forward_button.dart';
+import 'package:penny_smart_wallet/core/widgets/settings_widget/logout_button.dart';
+import 'package:penny_smart_wallet/core/widgets/settings_widget/setting_item.dart';
+import 'package:penny_smart_wallet/core/widgets/settings_widget/setting_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:auto_route/auto_route.dart';
 
-class AccountScreen extends StatefulWidget {
-  const AccountScreen({super.key});
+@RoutePage()
+class SettingsView extends StatefulWidget {
+  const SettingsView({super.key});
 
   @override
-  State<AccountScreen> createState() => _AccountScreenState();
+  State<SettingsView> createState() => _SettingsViewState();
 }
 
-class _AccountScreenState extends State<AccountScreen> {
+class _SettingsViewState extends State<SettingsView> {
   bool isDarkMode = true;
   bool isNotification = true;
   @override
@@ -168,7 +170,7 @@ AppBar _customAppBar(BuildContext context) {
             onPressed: () {
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                  builder: (context) => Bottom(),
+                  builder: (context) => BottomView(),
                 ),
               );
             },

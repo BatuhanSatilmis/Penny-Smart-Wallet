@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:penny_smart_wallet/data/model/add_date.dart';
+import 'package:penny_smart_wallet/core/data/model/add_date.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:penny_smart_wallet/data/utlity.dart';
+import 'package:penny_smart_wallet/core/data/utlity.dart';
+import 'package:auto_route/auto_route.dart';
 
-class Calculation extends StatefulWidget {
+@RoutePage()
+class CalculationView extends StatefulWidget {
   @override
-  _CalculationWidgetState createState() => _CalculationWidgetState();
+  _CalculationViewWidgetState createState() => _CalculationViewWidgetState();
 }
 
-class _CalculationWidgetState extends State<Calculation> {
+class _CalculationViewWidgetState extends State<CalculationView> {
   List<Add_data> todayData = [];
   List<Add_data> weekData = [];
   List<Add_data> monthData = [];

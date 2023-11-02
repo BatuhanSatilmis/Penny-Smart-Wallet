@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:penny_smart_wallet/data/model/add_date.dart';
+import 'package:penny_smart_wallet/app/routes/app_router.dart';
+import 'package:penny_smart_wallet/core/data/model/add_date.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:auto_route/auto_route.dart';
 
-class Add_Screen extends StatefulWidget {
-  const Add_Screen({super.key});
+@RoutePage()
+class AddView extends StatefulWidget {
+  const AddView({super.key});
 
   @override
-  State<Add_Screen> createState() => _Add_ScreenState();
+  State<AddView> createState() => _AddViewState();
 }
 
-class _Add_ScreenState extends State<Add_Screen> {
+class _AddViewState extends State<AddView> {
   final box = Hive.box<Add_data>('data');
   DateTime date = new DateTime.now();
   String? selctedItem;
@@ -92,7 +95,7 @@ class _Add_ScreenState extends State<Add_Screen> {
         var add = Add_data(
             selctedItemi!, amount_c.text, date, expalin_C.text, selctedItem!);
         box.add(add);
-        Navigator.of(context).pop();
+        context.router.replace(BottomViewRoute());
       },
       child: Container(
         alignment: Alignment.center,
@@ -297,7 +300,7 @@ class _Add_ScreenState extends State<Add_Screen> {
       left: 0,
       child: InkWell(
         onTap: () {
-          Navigator.pop(context);
+          context.router.replace(BottomViewRoute());
         },
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 10),

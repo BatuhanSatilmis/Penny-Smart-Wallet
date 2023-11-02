@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:penny_smart_wallet/data/model/add_date.dart';
-import 'package:penny_smart_wallet/data/utlity.dart';
+import 'package:penny_smart_wallet/core/data/model/add_date.dart';
+import 'package:penny_smart_wallet/core/data/utlity.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 // ignore: must_be_immutable

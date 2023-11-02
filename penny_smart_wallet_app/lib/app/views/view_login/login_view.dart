@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:penny_smart_wallet/views/view_forgot_password/forgot_password_view.dart';
-import 'package:penny_smart_wallet/views/view_signup/signup_view.dart';
-import 'package:penny_smart_wallet/widgets/bottomnavigationbar.dart';
+import 'package:penny_smart_wallet/app/routes/app_router.dart';
+import 'package:penny_smart_wallet/app/views/view_forgot_password/forgot_password_view.dart';
+import 'package:penny_smart_wallet/app/views/view_signup/signup_view.dart';
+import 'package:auto_route/auto_route.dart';
 
+@RoutePage()
 class LoginPageView extends StatefulWidget {
   const LoginPageView({Key? key}) : super(key: key);
 
@@ -163,11 +165,7 @@ Widget _signinButton(BuildContext context) {
                 ),
               ),
               onPressed: () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => Bottom(),
-                  ),
-                );
+                context.router.replace(BottomViewRoute());
               },
               child: const Text('Sign in',
                   style: TextStyle(color: Colors.white, fontSize: 16))),

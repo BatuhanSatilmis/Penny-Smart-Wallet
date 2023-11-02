@@ -1,4 +1,4 @@
-import 'package:penny_smart_wallet/widgets/settings_widget/forward_button.dart';
+import 'package:penny_smart_wallet/core/widgets/settings_widget/forward_button.dart';
 import 'package:flutter/material.dart';
 
 class SettingItem extends StatelessWidget {

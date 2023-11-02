@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:penny_smart_wallet/data/utlity.dart';
-import 'package:penny_smart_wallet/widgets/chart.dart';
-import '../../data/model/add_date.dart';
+import 'package:penny_smart_wallet/core/data/utlity.dart';
+import 'package:penny_smart_wallet/core/widgets/chart.dart';
+import '/../../core/data/model/add_date.dart';
+import 'package:auto_route/auto_route.dart';
 
-class Statistics extends StatefulWidget {
-  const Statistics({Key? key}) : super(key: key);
+@RoutePage()
+class StatisticsView extends StatefulWidget {
+  const StatisticsView({Key? key}) : super(key: key);
 
   @override
-  State<Statistics> createState() => _StatisticsState();
+  State<StatisticsView> createState() => _StatisticsViewState();
 }
 
 ValueNotifier kj = ValueNotifier(0);
 
-class _StatisticsState extends State<Statistics> {
+class _StatisticsViewState extends State<StatisticsView> {
   List day = ['Day', 'Week', 'Month', 'Year'];
   List f = [today(), week(), month(), year()];
   List<Add_data> a = [];
@@ -46,7 +48,7 @@ class _StatisticsState extends State<Statistics> {
             children: [
               SizedBox(height: 20),
               Text(
-                'Statistics',
+                'StatisticsView',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
