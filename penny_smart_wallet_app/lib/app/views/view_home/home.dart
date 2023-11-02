@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -14,6 +15,8 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   var history;
   final box = Hive.box<Add_data>('data');
   final List<String> day = [
@@ -298,6 +301,7 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget _head() {
+    String? _email = _auth.currentUser?.email;
     return Container(
       padding: EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
       child: Column(
@@ -314,7 +318,7 @@ class _HomeViewState extends State<HomeView> {
           ),
           SizedBox(height: 10),
           Text(
-            'batuhansatilmis@gmail.com',
+            "$_email",
             style: TextStyle(
               fontWeight: FontWeight.w300,
               fontSize: 12,

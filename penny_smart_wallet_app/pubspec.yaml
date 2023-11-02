@@ -19,9 +19,11 @@ dependencies:
   animate_do: ^3.1.2
   ionicons: ^0.2.2
   firebase_core: ^2.21.0
-  
-   
-
+  firebase_auth: ^4.9.0
+  cloud_firestore: ^4.2.0
+  flutter_localization: 
+    sdk: flutter
+  intl: any
 
 
 dev_dependencies:
@@ -33,9 +35,8 @@ dev_dependencies:
   
  
 flutter:
-
   uses-material-design: true
-  
+  generate: true
   assets:
     - images/
 

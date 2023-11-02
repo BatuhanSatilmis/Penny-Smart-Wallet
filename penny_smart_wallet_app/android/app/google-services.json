@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:68392248210:android:564b78b507e4a3bdf1974b",
+        "mobilesdk_app_id": "1:68392248210:android:596dd0dbe7a799c3f1974b",
         "android_client_info": {
-          "package_name": "com.edu4tech.pennysmartwallet"
+          "package_name": "com.example.penny_smart_wallet_app"
         }
       },
       "oauth_client": [],
