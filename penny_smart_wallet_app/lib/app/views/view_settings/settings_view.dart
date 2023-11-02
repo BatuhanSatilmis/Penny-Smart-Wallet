@@ -1,3 +1,4 @@
+import 'package:penny_smart_wallet/app/routes/app_router.dart';
 import 'package:penny_smart_wallet/app/views/view_edit_account/edit_account_view.dart';
 import 'package:penny_smart_wallet/core/widgets/bottomnavigationbar.dart';
 import 'package:penny_smart_wallet/core/widgets/settings_widget/forward_button.dart';
@@ -168,11 +169,7 @@ AppBar _customAppBar(BuildContext context) {
               color: Colors.grey.shade50,
             ),
             onPressed: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => BottomView(),
-                ),
-              );
+              context.replaceRoute(BottomViewRoute());
             },
           ),
           Text(
