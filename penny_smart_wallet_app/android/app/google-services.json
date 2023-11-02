@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "68392248210",
+    "project_id": "penny-smart-wallet",
+    "storage_bucket": "penny-smart-wallet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68392248210:android:564b78b507e4a3bdf1974b",
+        "android_client_info": {
+          "package_name": "com.edu4tech.pennysmartwallet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjPhyIt3qf6E6xmTlLm4TlQG4UUNsO2_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

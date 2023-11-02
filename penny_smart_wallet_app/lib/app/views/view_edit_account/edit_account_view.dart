@@ -12,7 +12,7 @@ class EditAccountView extends StatefulWidget {
 }
 
 class _EditAccountViewState extends State<EditAccountView> {
-  File? _selectedImage; // Variable to store the selected image
+  File? _selectedImage;
 
   @override
   Widget build(BuildContext context) {

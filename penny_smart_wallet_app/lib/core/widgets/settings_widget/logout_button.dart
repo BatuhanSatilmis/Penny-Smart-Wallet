@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:penny_smart_wallet/app/views/view_login/login_view.dart';
+import 'package:penny_smart_wallet/app/routes/app_router.dart';
+import 'package:auto_route/auto_route.dart';
 
+@RoutePage()
 class ExitIconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => LoginPageView(),
-          ),
-        );
+        context.router.replace(LoginPageViewRoute());
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,

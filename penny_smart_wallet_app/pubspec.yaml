@@ -18,6 +18,7 @@ dependencies:
   image_picker: ^1.0.2
   animate_do: ^3.1.2
   ionicons: ^0.2.2
+  firebase_core: ^2.21.0
   
    
 
