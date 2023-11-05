@@ -24,7 +24,6 @@ class _SettingsViewState extends State<SettingsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: _customAppBar(context),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(30),
@@ -34,7 +33,7 @@ class _SettingsViewState extends State<SettingsView> {
               const Text(
                 "Settings",
                 style: TextStyle(
-                  fontSize: 36,
+                  fontSize: 32,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
@@ -155,33 +154,4 @@ class _SettingsViewState extends State<SettingsView> {
   }
 }
 
-AppBar _customAppBar(BuildContext context) {
-  return AppBar(
-    backgroundColor: Colors.black,
-    elevation: 0,
-    title: Align(
-      alignment: Alignment.centerLeft,
-      child: Row(
-        children: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.keyboard_arrow_left,
-              color: Colors.grey.shade50,
-            ),
-            onPressed: () {
-              context.replaceRoute(BottomViewRoute());
-            },
-          ),
-          Text(
-            'Back',
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey.shade50,
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
-}
+

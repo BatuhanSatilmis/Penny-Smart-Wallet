@@ -80,19 +80,18 @@ class _CalculationViewWidgetState extends State<CalculationView> {
         DateTime(DateTime.now().year, DateTime.now().month + 1, 1)
             .subtract(Duration(days: 1))
             .day;
-    return (total * remainingDaysInMonth).toInt();
+    return (remainingDaysInMonth != 0) ? (total * remainingDaysInMonth).toInt() : total;
   }
 
-  num calculateYearlyEstimate(int monthlyTotal, int currentMonth) {
+  int calculateYearlyEstimate(int monthlyTotal, int currentMonth) {
     if (currentMonth <= 0) return monthlyTotal;
     return (monthlyTotal * 12).toInt();
   }
 
   int calculateWeeklyEstimate(int total, int daysElapsed) {
     if (daysElapsed <= 0) return total;
-
     int remainingDaysInWeek = 7 - DateTime.now().weekday;
-    return (total * (7 / remainingDaysInWeek)).toInt();
+    return (remainingDaysInWeek != 0) ? (total * (7 / remainingDaysInWeek)).toInt() : total;
   }
 
   @override
@@ -107,7 +106,7 @@ class _CalculationViewWidgetState extends State<CalculationView> {
     int monthlyTotalWeek = calculateMonthlyEstimate(totalWeek, daysElapsed);
 
     int monthlyTotalMonth = calculateMonthlyEstimate(totalMonth, daysElapsed);
-    num yearlyTotalMonth =
+    int yearlyTotalMonth =
         calculateYearlyEstimate(monthlyTotalMonth, currentMonth);
 
     return Scaffold(
@@ -133,14 +132,14 @@ class _CalculationViewWidgetState extends State<CalculationView> {
                     total: totalToday,
                     monthlyEstimate: monthlyTotalToday,
                     weeklyEstimate: weeklyTotalToday,
-                    yearlyEstimate: monthlyTotalToday * 12,
+                    yearlyEstimate: monthlyTotalToday ,
                     cardColor: Color.fromARGB(255, 41, 17, 2)),
-                DataCard(
+                DataCard( 
                     title: "Haftalık Harcamalar",
                     total: totalWeek,
                     monthlyEstimate: monthlyTotalWeek,
                     weeklyEstimate: weeklyTotalToday,
-                    yearlyEstimate: monthlyTotalWeek * 12,
+                    yearlyEstimate: monthlyTotalWeek,
                     cardColor: Color.fromARGB(255, 2, 32, 12)),
                 DataCard(
                     title: "Aylık Harcamalar",
@@ -163,7 +162,7 @@ class DataCard extends StatelessWidget {
   final int total;
   final int monthlyEstimate;
   final int weeklyEstimate;
-  final num yearlyEstimate;
+  final int yearlyEstimate;
   final Color cardColor;
 
   DataCard({
