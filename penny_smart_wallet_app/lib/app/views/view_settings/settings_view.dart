@@ -23,6 +23,7 @@ class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.black),
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Padding(
@@ -153,5 +154,3 @@ class _SettingsViewState extends State<SettingsView> {
     );
   }
 }
-
-
