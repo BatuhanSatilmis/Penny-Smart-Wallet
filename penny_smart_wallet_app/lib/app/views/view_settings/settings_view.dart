@@ -1,6 +1,5 @@
-import 'package:penny_smart_wallet/app/routes/app_router.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:penny_smart_wallet/app/views/view_edit_account/edit_account_view.dart';
-import 'package:penny_smart_wallet/core/widgets/bottomnavigationbar.dart';
 import 'package:penny_smart_wallet/core/widgets/settings_widget/forward_button.dart';
 import 'package:penny_smart_wallet/core/widgets/settings_widget/logout_button.dart';
 import 'package:penny_smart_wallet/core/widgets/settings_widget/setting_item.dart';
@@ -20,6 +19,20 @@ class SettingsView extends StatefulWidget {
 class _SettingsViewState extends State<SettingsView> {
   bool isDarkMode = true;
   bool isNotification = true;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  String? _email;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeEmail();
+  }
+
+  void _initializeEmail() async {
+    _email = _auth.currentUser?.email;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +71,7 @@ class _SettingsViewState extends State<SettingsView> {
                           width: 60, height: 60),
                     ),
                     const SizedBox(width: 20),
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -70,12 +83,12 @@ class _SettingsViewState extends State<SettingsView> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                          "afrousse1998@gmail.com",
+                          "$_email",
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
                           ),
-                        )
+                        ),
                       ],
                     ),
                     const Spacer(),

@@ -1,73 +1,86 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:penny_smart_wallet/app/routes/app_router.dart';
 import 'package:penny_smart_wallet/core/data/model/add_date.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:auto_route/auto_route.dart';
+import 'view_model/add_bloc.dart';
+import 'view_model/add_state.dart';
 
 @RoutePage()
 class AddView extends StatefulWidget {
-  const AddView({super.key});
+  const AddView({Key? key}) : super(key: key);
 
   @override
   State<AddView> createState() => _AddViewState();
 }
 
 class _AddViewState extends State<AddView> {
+  late AddBloc _addBloc;
+
   final box = Hive.box<Add_data>('data');
-  DateTime date = new DateTime.now();
-  String? selctedItem;
-  String? selctedItemi;
-  final TextEditingController expalin_C = TextEditingController();
-  FocusNode ex = FocusNode();
-  final TextEditingController amount_c = TextEditingController();
-  FocusNode amount_ = FocusNode();
+  DateTime date = DateTime.now();
+  String? selectedItem;
+  String? selectedItemi;
+  final TextEditingController explainController = TextEditingController();
+  final FocusNode ex = FocusNode();
+  final TextEditingController amountController = TextEditingController();
+  final FocusNode amountNode = FocusNode();
   final List<String> _item = [
     'Food',
-    "Transfer",
-    "Transportation",
-    "Education",
-    "Drinks",
-    "Bills",
-    "Work"
+    'Transfer',
+    'Transportation',
+    'Education',
+    'Drinks',
+    'Bills',
+    'Work',
   ];
-  final List<String> _itemei = [
-    'Income',
-    "Spending",
-  ];
+  final List<String> _itemei = ['Income', 'Spending'];
+
   @override
   void initState() {
     super.initState();
-    ex.addListener(() {
-      setState(() {});
-    });
-    amount_.addListener(() {
-      setState(() {});
-    });
+    _addBloc = AddBloc();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SafeArea(
-        child: Stack(
-          alignment: AlignmentDirectional.center,
-          children: [
-            _backButton(context),
-            Positioned(
-              top: 120,
-              child: main_container(),
-            ),
-          ],
+      body: BlocListener<AddBloc, AddState>(
+        bloc: _addBloc,
+        listener: (context, state) {
+          if (state is AddSavedState) {
+            context.router.replace(BottomViewRoute());
+          }
+        },
+        child: SafeArea(
+          child: Stack(
+            alignment: AlignmentDirectional.center,
+            children: [
+              _backButton(context),
+              Positioned(
+                top: 120,
+                child: mainContainer(),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Container main_container() {
+  @override
+  void dispose() {
+    _addBloc.close();
+    super.dispose();
+  }
+
+  Container mainContainer() {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
-        color: const Color.fromARGB(255, 34, 34, 34),
+        color: Color.fromARGB(255, 85, 79, 79),
       ),
       height: 550,
       width: 340,
@@ -78,23 +91,29 @@ class _AddViewState extends State<AddView> {
           SizedBox(height: 30),
           amount(),
           SizedBox(height: 30),
-          How(),
+          how(),
           SizedBox(height: 30),
-          date_time(),
+          dateTime(),
           Spacer(),
-          save(),
+          saveButton(context),
           SizedBox(height: 25),
         ],
       ),
     );
   }
 
-  GestureDetector save() {
+  GestureDetector saveButton(BuildContext context) {
     return GestureDetector(
       onTap: () {
         var add = Add_data(
-            selctedItemi!, amount_c.text, date, expalin_C.text, selctedItem!);
+          selectedItemi!,
+          amountController.text,
+          date,
+          explainController.text,
+          selectedItem!,
+        );
         box.add(add);
+
         context.router.replace(BottomViewRoute());
       },
       child: Container(
@@ -118,23 +137,25 @@ class _AddViewState extends State<AddView> {
     );
   }
 
-  Widget date_time() {
+  Widget dateTime() {
     return Container(
       alignment: Alignment.bottomLeft,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(width: 2, color: Color(0xffC5C5C5))),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(width: 2, color: Color(0xffC5C5C5)),
+      ),
       width: 300,
       child: TextButton(
         onPressed: () async {
           DateTime? newDate = await showDatePicker(
-              context: context,
-              initialDate: date,
-              firstDate: DateTime(2023),
-              lastDate: DateTime(2025));
-          if (newDate == Null) return;
+            context: context,
+            initialDate: date,
+            firstDate: DateTime(2023),
+            lastDate: DateTime(2025),
+          );
+          if (newDate == null) return;
           setState(() {
-            date = newDate!;
+            date = newDate;
           });
         },
         child: Text(
@@ -148,7 +169,7 @@ class _AddViewState extends State<AddView> {
     );
   }
 
-  Padding How() {
+  Padding how() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Container(
@@ -162,10 +183,10 @@ class _AddViewState extends State<AddView> {
           ),
         ),
         child: DropdownButton<String>(
-          value: selctedItemi,
+          value: selectedItemi,
           onChanged: ((value) {
             setState(() {
-              selctedItemi = value!;
+              selectedItemi = value!;
             });
           }),
           items: _itemei
@@ -177,7 +198,7 @@ class _AddViewState extends State<AddView> {
                           Text(
                             e,
                             style: TextStyle(fontSize: 18),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -209,18 +230,20 @@ class _AddViewState extends State<AddView> {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: TextField(
         keyboardType: TextInputType.number,
-        focusNode: amount_,
-        controller: amount_c,
+        focusNode: amountNode,
+        controller: amountController,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           labelText: 'amount',
           labelStyle: TextStyle(fontSize: 17, color: Colors.grey.shade500),
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xffC5C5C5))),
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(width: 2, color: Color(0xffC5C5C5)),
+          ),
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xff368983))),
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(width: 2, color: Color(0xff368983)),
+          ),
         ),
       ),
     );
@@ -240,10 +263,10 @@ class _AddViewState extends State<AddView> {
           ),
         ),
         child: DropdownButton<String>(
-          value: selctedItem,
+          value: selectedItem,
           onChanged: ((value) {
             setState(() {
-              selctedItem = value!;
+              selectedItem = value!;
             });
           }),
           items: _item
@@ -260,7 +283,7 @@ class _AddViewState extends State<AddView> {
                           Text(
                             e,
                             style: TextStyle(fontSize: 18),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -275,7 +298,7 @@ class _AddViewState extends State<AddView> {
                         child: Image.asset('images/${e}.png'),
                       ),
                       SizedBox(width: 5),
-                      Text(e)
+                      Text(e),
                     ],
                   ))
               .toList(),
